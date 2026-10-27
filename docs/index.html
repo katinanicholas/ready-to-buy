@@ -1,0 +1,202 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Am I Ready to Buy? The Homebuyer Readiness Assessment | Katina, Epique Realty</title>
+  <meta name="description" content="Nine questions. About two minutes. Find out where you stand on buying a home on the Mississippi Gulf Coast, and get personalized next steps.">
+  <meta name="theme-color" content="#1A4744">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <header class="site-header">
+    <div class="brand" aria-label="Katina, Epique Realty">
+      <span class="brand-name" data-config="AGENT_DISPLAY_NAME">Katina</span>
+      <span class="brand-divider" aria-hidden="true"></span>
+      <span class="brand-name" data-config="BROKERAGE_NAME">Epique Realty</span>
+    </div>
+  </header>
+
+  <div id="test-banner" class="test-banner" role="status" hidden></div>
+
+  <main id="main" tabindex="-1">
+
+    <!-- Intro -->
+    <section id="view-intro" class="view view-intro" aria-labelledby="intro-title">
+      <div class="intro-band">
+        <div class="wrap">
+          <h1 id="intro-title" class="intro-title">Am I Ready to Buy?</h1>
+          <p class="intro-sub">The Homebuyer Readiness Assessment</p>
+        </div>
+      </div>
+      <div class="wrap intro-body">
+        <p class="lede">Nine questions. About two minutes. A clear read on where you stand, and what to do next.</p>
+        <p>No phone number. No credit check. Your answers shape a personalized report with your readiness pathway and recommended next steps.</p>
+        <button type="button" id="start-btn" class="btn btn-primary">Start the assessment</button>
+        <p class="fine">Educational only. This is not a loan application and does not determine mortgage eligibility.</p>
+      </div>
+    </section>
+
+    <!-- Questions -->
+    <section id="view-question" class="view" hidden>
+      <div class="wrap">
+        <div class="progress-row">
+          <p id="progress-text" class="progress-text">Question 1 of 9</p>
+          <div id="progress" class="progress" role="progressbar" aria-label="Assessment progress"
+               aria-valuemin="1" aria-valuemax="9" aria-valuenow="1" aria-valuetext="Question 1 of 9">
+            <div id="progress-fill" class="progress-fill"></div>
+          </div>
+        </div>
+
+        <form id="question-form" novalidate>
+          <fieldset id="question-fieldset" aria-describedby="question-hint question-error">
+            <legend>
+              <h2 id="question-title" class="question-title" tabindex="-1"></h2>
+            </legend>
+            <p id="question-hint" class="hint"></p>
+            <div id="options" class="options"></div>
+            <p id="question-error" class="field-error" role="alert"></p>
+          </fieldset>
+          <div class="nav-row">
+            <button type="button" id="back-btn" class="btn btn-quiet">Back</button>
+            <button type="submit" id="next-btn" class="btn btn-primary">Next</button>
+          </div>
+        </form>
+      </div>
+    </section>
+
+    <!-- Report gate: name + email -->
+    <section id="view-gate" class="view" hidden aria-labelledby="gate-title">
+      <div class="wrap">
+        <h2 id="gate-title" class="gate-title" tabindex="-1">Your Homebuyer Readiness Report is ready!</h2>
+        <p class="lede-small">Enter your first name and email to get your report. It includes your readiness pathway, what it means, and recommended next steps based on your answers.</p>
+
+        <div id="form-summary" class="form-summary" role="alert" tabindex="-1" hidden></div>
+
+        <form id="lead-form" novalidate>
+          <div class="field">
+            <label for="first-name">First name</label>
+            <input id="first-name" name="firstName" type="text" autocomplete="given-name" maxlength="50" required
+                   aria-describedby="first-name-error">
+            <p id="first-name-error" class="field-error"></p>
+          </div>
+
+          <div class="field">
+            <label for="email">Email address</label>
+            <input id="email" name="email" type="email" inputmode="email" autocomplete="email" maxlength="254"
+                   autocapitalize="off" spellcheck="false" required aria-describedby="email-error">
+            <p id="email-error" class="field-error"></p>
+          </div>
+
+          <!-- Spam trap. Humans never see or fill this. -->
+          <div class="hp" aria-hidden="true">
+            <label for="company">Company</label>
+            <input id="company" name="company" type="text" tabindex="-1" autocomplete="off">
+          </div>
+
+          <div class="consent">
+            <input id="consent" name="marketingConsent" type="checkbox">
+            <label for="consent">Optional: Send me occasional homebuying tips and a follow-up from Katina. I can unsubscribe anytime.</label>
+          </div>
+          <p class="fine">Your report is sent whether or not you check this box.</p>
+
+          <div id="turnstile" class="turnstile" hidden></div>
+
+          <button type="submit" id="submit-btn" class="btn btn-primary btn-block">Email my report</button>
+
+          <p class="fine privacy-note">
+            Your name and email are used to send your report and to let Katina know you completed the assessment.
+            Read the <a id="privacy-link" href="privacy.html">privacy notice</a>.
+          </p>
+          <button type="button" id="edit-answers-btn" class="btn-link">Change my answers</button>
+        </form>
+      </div>
+    </section>
+
+    <!-- Sending -->
+    <section id="view-sending" class="view" hidden aria-live="polite">
+      <div class="wrap sending">
+        <div class="spinner" aria-hidden="true"></div>
+        <h2 class="gate-title" tabindex="-1" id="sending-title">Sending your report</h2>
+        <p>This can take up to 20 seconds. Keep this page open.</p>
+      </div>
+    </section>
+
+    <!-- Error -->
+    <section id="view-error" class="view" hidden>
+      <div class="wrap">
+        <h2 id="error-title" class="gate-title" tabindex="-1">Your report wasn't sent</h2>
+        <p id="error-message"></p>
+        <div class="stack">
+          <button type="button" id="retry-btn" class="btn btn-primary btn-block">Try again</button>
+          <button type="button" id="show-anyway-btn" class="btn btn-quiet btn-block" hidden>Show my results on this page</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Results -->
+    <section id="view-result" class="view" hidden aria-labelledby="result-name">
+      <div class="wrap">
+        <div id="delivery-status" class="delivery" role="status" tabindex="-1"></div>
+
+        <p class="result-label">Your readiness pathway</p>
+        <h2 id="result-name" class="result-name"></h2>
+        <p id="result-explanation" class="result-explanation"></p>
+
+        <div id="result-notes"></div>
+
+        <h3 class="section-head">Your recommended next steps</h3>
+        <ol id="result-steps" class="steps"></ol>
+
+        <div class="pair">
+          <div>
+            <h3 class="section-head">Your top concern</h3>
+            <p id="concern-answer" class="quote-answer"></p>
+            <p id="concern-guidance"></p>
+          </div>
+          <div>
+            <h3 class="section-head">What will help most</h3>
+            <p id="help-answer" class="quote-answer"></p>
+            <p id="help-guidance"></p>
+          </div>
+        </div>
+      </div>
+
+      <div class="cta-band">
+        <div class="wrap">
+          <p id="cta-support" class="cta-support"></p>
+          <div id="cta-slot"></div>
+        </div>
+      </div>
+
+      <div class="wrap">
+        <p id="result-disclaimer" class="fine disclaimer"></p>
+        <button type="button" id="restart-btn" class="btn-link">Start over</button>
+      </div>
+    </section>
+
+    <div id="sr-status" class="sr-only" aria-live="polite"></div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="wrap">
+      <p class="footer-brand">
+        <span><span data-config="AGENT_DISPLAY_NAME">Katina</span>, <span data-config="AGENT_TITLE">Realtor</span></span>
+        <span class="brand-divider" aria-hidden="true"></span>
+        <span data-config="BROKERAGE_NAME">Epique Realty</span>
+      </p>
+      <p id="footer-disclosure"></p>
+      <p>Equal Housing Opportunity. <a href="privacy.html" id="footer-privacy">Privacy notice</a></p>
+    </div>
+  </footer>
+
+  <script src="js/config.js"></script>
+  <script src="js/assessment.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>
