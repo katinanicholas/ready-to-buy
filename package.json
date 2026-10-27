@@ -1,0 +1,13 @@
+{
+  "name": "homebuyer-readiness-assessment",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Am I Ready to Buy? The Homebuyer Readiness Assessment. Static site + Apps Script backend.",
+  "scripts": {
+    "sync": "node scripts/sync-backend.js",
+    "test": "npm run sync && node --test tests/assessment.test.js tests/backend.test.js",
+    "serve": "node scripts/serve.js",
+    "preview:emails": "npm run sync && node scripts/preview-emails.js"
+  },
+  "engines": { "node": ">=18" }
+}
