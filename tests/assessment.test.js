@@ -37,7 +37,7 @@ test('approved pathway explanations and CTA copy', () => {
   assert.equal(A.PATHWAYS.ready.explanation, "Based on your answers, you're ready to start exploring your homebuying options. Next step, understand your purchasing power and make a plan that fits your goals.");
   assert.equal(A.PATHWAYS.facts.explanation, "Based on your answers, you're interested in homeownership but may need more information before moving forward. Your next step is to understand financing options, potential costs, and what makes sense for you.");
   assert.equal(A.PATHWAYS.prepare.explanation, 'Based on your answers, you may benefit from some preparation. Start by speaking with a mortgage lender to understand financing, and a Realtor to build a plan that fits your goals.');
-  assert.equal(A.CTA.label, 'Schedule a Strategy Call with Katina');
+  assert.equal(A.CTA.label, 'Schedule a Strategy Call with Katina Bodden');
   assert.equal(A.CTA.support, "Ready to take your next step? Let's discuss your results, answer your questions, and create a homebuying strategy that fits your goals.");
 });
 
@@ -187,7 +187,7 @@ test('report has 3 steps, CTA, disclaimer, and no numeric score', () => {
     const r = A.buildReport(a);
     assert.equal(r.pathwayId, id);
     assert.equal(r.steps.length, 3);
-    assert.equal(r.cta.label, 'Schedule a Strategy Call with Katina');
+    assert.equal(r.cta.label, 'Schedule a Strategy Call with Katina Bodden');
     assert.ok(r.disclaimer.includes('does not determine mortgage eligibility'));
     assert.equal('score' in r, false);
     const text = JSON.stringify([r.steps, r.concern, r.help, r.notes, r.explanation]);

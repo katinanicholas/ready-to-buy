@@ -6,7 +6,7 @@ const crypto = require('crypto');
 const { root, loadBackend } = require('../scripts/load');
 
 const answers = { q1: ['A', 'C'], q2: 'B', q3: 'C', q4: 'B', q5: 'B', q6: 'C', q7: 'B', q8: 'D', q9: 'C' };
-const brand = { agentName: 'Katina', agentTitle: 'Realtor', licensedName: 'Licensed Name', licenseState: 'Mississippi',
+const brand = { agentName: 'Katina Bodden', agentTitle: 'Realtor', licensedName: 'Licensed Name', licenseState: 'Mississippi',
   licenseNumber: 'S-58840', brokerage: 'Epique Realty', brokerageAddress: '123 Main St', brokeragePhone: '888.893.3537', privacyUrl: '' };
 const SCHED = 'https://calendly.example/katina';
 
@@ -124,7 +124,7 @@ test('report email: pathway, steps, scheduling link, escaping, disclaimer', () =
     assert.ok(e.subject.endsWith(name));
     assert.ok(e.html.includes('Jo&lt;b&gt;') && !e.html.includes('Jo<b>'));
     assert.ok(e.html.includes(SCHED) && e.text.includes(SCHED));
-    assert.ok(e.html.includes('Schedule a Strategy Call with Katina'));
+    assert.ok(e.html.includes('Schedule a Strategy Call with Katina Bodden'));
     r.steps.forEach((s) => assert.ok(e.text.includes(s.title)));
     assert.ok(e.html.includes('does not determine mortgage eligibility'));
     assert.ok(e.html.includes('Epique Realty') && e.html.includes('Equal Housing Opportunity'));

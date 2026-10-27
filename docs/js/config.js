@@ -23,7 +23,7 @@ window.APP_CONFIG = {
   PRIVACY_URL: 'privacy.html',
 
   // Footer and disclosure details. Confirm each before launch.
-  AGENT_DISPLAY_NAME: 'Katina',
+  AGENT_DISPLAY_NAME: 'Katina Bodden',
   AGENT_TITLE: 'Realtor',
   AGENT_LICENSED_NAME: 'Katina Bodden',
   LICENSE_STATE: 'Mississippi',

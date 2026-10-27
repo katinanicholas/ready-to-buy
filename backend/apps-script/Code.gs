@@ -14,8 +14,8 @@
 var REQUIRED_PROPS = ['NOTIFY_EMAIL', 'SCHEDULING_URL', 'WEB_APP_URL', 'SHEET_ID', 'BROKERAGE_ADDRESS'];
 
 var DEFAULTS = {
-  SENDER_NAME: 'Katina | Epique Realty',
-  AGENT_DISPLAY_NAME: 'Katina',
+  SENDER_NAME: 'Katina Bodden | Epique Realty',
+  AGENT_DISPLAY_NAME: 'Katina Bodden',
   AGENT_TITLE: 'Realtor',
   AGENT_LICENSED_NAME: '',
   LICENSE_STATE: 'Mississippi',

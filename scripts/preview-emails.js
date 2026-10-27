@@ -7,7 +7,7 @@ const out = path.join(root, 'email-previews');
 fs.mkdirSync(out, { recursive: true });
 
 const brand = {
-  agentName: 'Katina', agentTitle: 'Realtor', licensedName: 'Katina Bodden', licenseState: 'Mississippi',
+  agentName: 'Katina Bodden', agentTitle: 'Realtor', licensedName: 'Katina Bodden', licenseState: 'Mississippi',
   licenseNumber: 'S-58840', brokerage: 'Epique Realty', brokerageAddress: '520 Pass Rd Ste L, Gulfport, MS 39507',
   brokeragePhone: '888.893.3537', agentPhone: '228.346.6781', agentEmail: 'realbodden@gmail.com', privacyUrl: 'https://katinanicholas.github.io/ready-to-buy/privacy.html'
 };

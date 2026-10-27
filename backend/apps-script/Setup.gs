@@ -13,7 +13,8 @@ function loadKnownProperties() {
   var known = {
     NOTIFY_EMAIL: 'realbodden@gmail.com',
     SCHEDULING_URL: 'https://calendly.com/katinabodden/let-s-chat',
-    SENDER_NAME: 'Katina | Epique Realty',
+    SENDER_NAME: 'Katina Bodden | Epique Realty',
+    AGENT_DISPLAY_NAME: 'Katina Bodden',
     AGENT_LICENSED_NAME: 'Katina Bodden',
     LICENSE_NUMBER: 'S-58840',
     BROKERAGE_NAME: 'Epique Realty',

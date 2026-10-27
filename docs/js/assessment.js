@@ -137,7 +137,7 @@ var Assessment = (function () {
   };
 
   var CTA = {
-    label: 'Schedule a Strategy Call with Katina',
+    label: 'Schedule a Strategy Call with Katina Bodden',
     support: "Ready to take your next step? Let's discuss your results, answer your questions, and create a homebuying strategy that fits your goals."
   };
 

@@ -134,6 +134,19 @@ a:hover { color: var(--teal-deep); }
   margin: 0 0 1rem;
 }
 .lede-small { margin: 0 0 1.5rem; color: var(--ink); }
+.intro-list { list-style: none; padding: 0; margin: 0 0 1.25rem; }
+.intro-list li {
+  position: relative;
+  padding: 0 0 .75rem 1.25rem;
+}
+.intro-list li::before {
+  content: '';
+  position: absolute; left: 0; top: .7em;
+  width: .5rem; height: 2px;
+  background: var(--brass-deep);
+}
+.intro-list strong { font-weight: 600; }
+.intro-facts { font-weight: 500; color: var(--teal); }
 
 .fine {
   font-size: .875rem;
