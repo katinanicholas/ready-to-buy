@@ -7,7 +7,7 @@
  */
 window.APP_CONFIG = {
   // Apps Script web app URL ending in /exec (see README, "Deploy the backend").
-  ENDPOINT_URL: '',
+  ENDPOINT_URL: 'https://script.google.com/macros/s/AKfycbwkg6Fc5swCXF2qQPBJb7hDlv4S3Mez0OTXbAyTmIv9EUVu6s1nOixb1zobu93pNAYzCQ/exec',
 
   // Katina's existing scheduling page (same link as the listing lookbooks).
   // Also set as SCHEDULING_URL in the backend Script Properties (used in emails).
