@@ -23,7 +23,7 @@
 
   function $(id) { return document.getElementById(id); }
 
-  var views = ['intro', 'question', 'gate', 'sending', 'error', 'result'];
+  var views = ['intro', 'question', 'gate', 'sending', 'error', 'done', 'result'];
 
   // ---------------------------------------------------------------- setup
   var endpointConfigured = isHttpsUrl(cfg.ENDPOINT_URL);
@@ -327,7 +327,7 @@
 
   function handleResponse(data) {
     if (data.ok === true) {
-      showResult('sent');
+      showDone();
       return;
     }
     switch (data.code) {
@@ -363,7 +363,9 @@
     $('error-message').textContent = (FAILURE_TEXT[code] || FAILURE_TEXT.server) +
       ' Your answers are saved on this page, so you will not need to start over.';
     var limit = Number(cfg.RESULTS_ON_SCREEN_AFTER_FAILURES) || 2;
-    $('show-anyway-btn').hidden = state.failures < limit;
+    var alt = $('schedule-instead');
+    alt.hidden = !(state.failures >= limit && schedulingConfigured);
+    if (schedulingConfigured) alt.href = cfg.SCHEDULING_URL.trim();
     show('error', { replace: true });
     focusEl($('error-title'));
   }
@@ -376,6 +378,40 @@
     return p;
   }
 
+  function renderCta(slot, supportEl) {
+    supportEl.textContent = A.CTA.support;
+    slot.innerHTML = '';
+    if (schedulingConfigured) {
+      var a = document.createElement('a');
+      a.className = 'btn btn-cta';
+      a.href = cfg.SCHEDULING_URL.trim();
+      a.target = '_blank';
+      a.rel = 'noopener';
+      a.textContent = A.CTA.label;
+      var srNew = document.createElement('span');
+      srNew.className = 'sr-only';
+      srNew.textContent = ' (opens in a new tab)';
+      a.appendChild(srNew);
+      slot.appendChild(a);
+    } else {
+      var box = document.createElement('div');
+      box.className = 'cta-missing';
+      var st = document.createElement('strong');
+      st.textContent = A.CTA.label;
+      box.appendChild(st);
+      box.appendChild(document.createTextNode('Scheduling link not configured. Set SCHEDULING_URL in js/config.js.'));
+      slot.appendChild(box);
+    }
+  }
+
+  // Live submissions: confirmation and scheduling button only. Results arrive by email.
+  function showDone() {
+    renderCta($('done-cta-slot'), $('done-cta-support'));
+    show('done', { replace: true });
+    focusEl($('done-title'));
+  }
+
+  // Test mode / server not configured only: results on screen for checking your work.
   function showResult(mode) {
     var r = state.report;
     var status = $('delivery-status');
@@ -390,9 +426,6 @@
     } else if (mode === 'server-not-configured') {
       status.classList.add('is-warning');
       status.appendChild(para('Email delivery is not set up on the server yet, so no email was sent. Your results are below.'));
-    } else if (mode === 'unsent') {
-      status.classList.add('is-warning');
-      status.appendChild(para('Your report was not emailed. Your results are below. You can also share them with Katina on a strategy call.'));
     }
 
     $('result-name').textContent = r.pathwayName;
@@ -491,13 +524,12 @@
   $('lead-form').addEventListener('submit', onSubmitLead);
   $('edit-answers-btn').addEventListener('click', function () { goToQuestion(TOTAL - 1); });
   $('retry-btn').addEventListener('click', function () { if (!state.submitting) send(); });
-  $('show-anyway-btn').addEventListener('click', function () { showResult('unsent'); });
-  $('restart-btn').addEventListener('click', function () { show('intro'); focusEl($('intro-title')); });
+    $('restart-btn').addEventListener('click', function () { show('intro'); focusEl($('intro-title')); });
 
   // Browser back button moves through the quiz instead of leaving the page.
   window.addEventListener('popstate', function (e) {
     var st = e.state;
-    if (state.view === 'sending' || state.view === 'result') {
+    if (state.view === 'sending' || state.view === 'result' || state.view === 'done') {
       history.pushState({ view: state.view, index: state.index }, '');
       return;
     }
