@@ -140,12 +140,27 @@
         <p id="error-message"></p>
         <div class="stack">
           <button type="button" id="retry-btn" class="btn btn-primary btn-block">Try again</button>
-          <button type="button" id="show-anyway-btn" class="btn btn-quiet btn-block" hidden>Show my results on this page</button>
+          <a id="schedule-instead" class="btn btn-quiet btn-block" target="_blank" rel="noopener" hidden>Schedule a Strategy Call with Katina Bodden</a>
         </div>
       </div>
     </section>
 
-    <!-- Results -->
+    <!-- Done: confirmation only. Results are delivered by email, never shown here. -->
+    <section id="view-done" class="view" hidden aria-labelledby="done-title">
+      <div class="wrap">
+        <h2 id="done-title" class="gate-title" tabindex="-1">Your personalized Homebuyer Readiness Report is on its way!</h2>
+        <p class="lede-small">Check your inbox for your results and recommended next steps.</p>
+        <p class="fine">Don't see it in a few minutes? Check your spam or promotions folder.</p>
+      </div>
+      <div class="cta-band">
+        <div class="wrap">
+          <p id="done-cta-support" class="cta-support"></p>
+          <div id="done-cta-slot"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Results (test mode only) -->
     <section id="view-result" class="view" hidden aria-labelledby="result-name">
       <div class="wrap">
         <div id="delivery-status" class="delivery" role="status" tabindex="-1"></div>
